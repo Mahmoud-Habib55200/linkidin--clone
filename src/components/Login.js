@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { SignInApi } from "../actions/index";
-import { Redirect  } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Login = (props) => {
   return (
     <Container>
-      {props.user && <Redirect to="/home" />} 
+      {props.user && <Redirect to="/home" />}
       <Nav>
         <Link href="/">
           <img src="/images/login-logo.svg" alt="" />
@@ -54,6 +54,20 @@ const Nav = styled.nav`
     @media (max-width: 768px) {
       padding: 0 5px;
     }
+    @media only screen and (max-width: 390px) {
+      width: 100px;
+      display: flex;
+      align-items: center;
+}
+@media only screen and (max-width: 351px) {
+      width: 70px;
+      display: flex;
+      align-items: center;
+}
+  }
+
+  @media only screen and (max-width: 390px) {
+ 
   }
 `;
 
@@ -64,6 +78,12 @@ const Join = styled.a`
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.6);
   margin-right: 12px;
+  @media only screen and (max-width: 720px) {
+    margin-right: 20px;
+  }
+  /* @media only screen and (max-width: 390px) {
+    width: 40px;
+  } */
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);
@@ -85,7 +105,12 @@ const SignIn = styled.a`
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
-
+  /* @media only screen and (max-width: 390px) {
+    flex-wrap: nowrap;
+    color: red;
+    margin-right: 10px;
+    font-size: 13px;
+  } */
   &:hover {
     background-color: rgba(112, 181, 249, 0.15);
     color: #0a66c2;
@@ -155,10 +180,10 @@ const Form = styled.div`
     margin-top: 20px;
   }
   @media only screen and (max-width: 428px) {
-    button{
+    button {
       margin-left: 3px;
     }
-}
+  }
 `;
 
 const Google = styled.button`
@@ -185,11 +210,11 @@ const Google = styled.button`
     margin-left: 50px;
   }
 `;
-const mapStateToProps = ( state ) => {
-  return{
+const mapStateToProps = (state) => {
+  return {
     user: state.userState.user,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   signIn: () => dispatch(SignInApi()),

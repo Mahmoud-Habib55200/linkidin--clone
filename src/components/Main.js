@@ -10,22 +10,22 @@ import { RotatingLines } from "react-loader-spinner";
 import { getArticleAPI } from "../actions";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import { useDispatch , useSelector } from 'react-redux';
-import {addIncrement} from "../actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { addIncrement } from "../actions/index";
 
 const Main = (props) => {
   const [showModl, setShowModel] = useState("close");
 
-  const {count} = useSelector (state => state.increment)
+  const { count } = useSelector((state) => state.increment);
 
   const dispatch = useDispatch();
 
-  const handleIncrement= () => {
-    dispatch(addIncrement())
-  }
+  const handleIncrement = () => {
+    dispatch(addIncrement());
+  };
   useEffect(() => {
     props.getArticles();
-  },[]);
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const Main = (props) => {
           <ShareBox>
             <div>
               {props.user && props.user.photoURL ? (
-                <img src={props.user.photoURL} alt='' />
+                <img src={props.user.photoURL} alt="" />
               ) : (
                 <img src="/images/user.svg" alt="" />
               )}
@@ -184,7 +184,9 @@ const Main = (props) => {
                       {!article.sahreImg && article.video ? (
                         <ReactPlayer width={"100%"} url={article.video} />
                       ) : (
-                        article.sahreImg && <img src={article.sahreImg} alt="" />
+                        article.sahreImg && (
+                          <img src={article.sahreImg} alt="" />
+                        )
                       )}
                     </Link>
                   </SharedImg>
@@ -203,9 +205,7 @@ const Main = (props) => {
                       </button>
                     </li>
                     <li>
-                      <Link>
-                        0
-                      </Link>
+                      <Link>0</Link>
                     </li>
                   </SocialCounts>
                   <SocialActions>
@@ -305,12 +305,24 @@ const ShareBox = styled(CommanCard)`
         }
         span {
           color: #70b5f9;
+          @media only screen and (max-width: 390px) {
+   
+        font-size: 10px;
+      }
         }
       }
       /* button:hover{
           background-color: red ;
           padding: 0px -14px  ;
         } */
+      @media only screen and (max-width: 390px) {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        font-size: 5px;
+      }
     }
   }
 `;
@@ -432,7 +444,6 @@ const SocialActions = styled.div`
 
 const Content = styled.div`
   text-align: center;
-
 `;
 const mapStateToProps = (state) => {
   return {

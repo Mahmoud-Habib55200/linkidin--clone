@@ -240,6 +240,11 @@ const NavList = styled.li`
     @media (max-width: 768px) {
       min-width: 70px;
     }
+    @media only screen and (max-width: 390px) {
+   
+      margin-left: -15px;
+
+ }
   }
 
   &:hover,
